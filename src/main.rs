@@ -4,7 +4,7 @@ mod days;
 
 type Solution = fn(&str) -> (i64, i64);
 
-static REGISTRY: &[Solution] = &[days::day_1::solution];
+static REGISTRY: &[Solution] = &[days::day_1::solution, days::day_2::solution];
 
 fn main() {
     let day = std::env::args().nth(1).expect("should specify day to run");
@@ -33,5 +33,8 @@ fn download_day(day: u64) {
     let url = format!("https://adventofcode.com/2025/day/{day}/input");
     let cookie = format!("Cookie: session={token}");
 
-    Command::new("curl").args([&url, "-H", &cookie, "-o", &day_file]);
+    Command::new("curl")
+        .args([&url, "-H", &cookie, "-o", &day_file])
+        .output()
+        .expect("should be able to run program");
 }
