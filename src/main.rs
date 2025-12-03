@@ -4,7 +4,11 @@ mod days;
 
 type Solution = fn(&str) -> (i64, i64);
 
-static REGISTRY: &[Solution] = &[days::day_1::solution, days::day_2::solution];
+static REGISTRY: &[Solution] = &[
+    days::day_1::solution,
+    days::day_2::solution,
+    days::day_3::solution,
+];
 
 fn main() {
     let day = std::env::args().nth(1).expect("should specify day to run");
