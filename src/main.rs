@@ -2,14 +2,6 @@ use std::process::Command;
 
 mod days;
 
-type Solution = fn(&str) -> (i64, i64);
-
-static REGISTRY: &[Solution] = &[
-    days::day_1::solution,
-    days::day_2::solution,
-    days::day_3::solution,
-];
-
 fn main() {
     let day = std::env::args().nth(1).expect("should specify day to run");
 
@@ -21,7 +13,7 @@ fn main() {
 
     let input = std::fs::read_to_string(format!("inputs/{day}.txt"))
         .expect("should be able to read input file");
-    let result = REGISTRY[day as usize - 1](&input);
+    let result = days::REGISTRY[day as usize - 1](&input);
     println!("part 1: {}, part 2: {}", result.0, result.1);
 }
 
