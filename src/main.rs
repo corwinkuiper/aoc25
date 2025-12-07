@@ -1,6 +1,7 @@
 use std::process::Command;
 
 mod days;
+pub mod util;
 
 fn main() {
     let day = std::env::args().nth(1).expect("should specify day to run");
